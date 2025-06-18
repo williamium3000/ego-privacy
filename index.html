@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EgoPrivacy | What Your First-Person Camera Says About You</title>
+  <meta name="description" content="EgoPrivacy benchmark reveals how wearable cameras leak identity, demographics and context, even in zero-shot settings.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="EgoPrivacy — What Your First-Person Camera Says About You">
+  <meta property="og:description" content="Wearable cameras leak more than you think.">
+  <meta property="og:image" content="static/images/overview.png">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>">
+
+  <style>
+    :root{--c1:#667eea;--c2:#764ba2;--c3:#ff9a9e;--c4:#a8edea;}
+    html{scroll-behavior:smooth;font-family:'Inter',sans-serif;}
+    .hero.is-dark{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;}
+    .key-card{border:0;min-height:100%}
+    .key-white{color:#fff;} .key-black{color:#000;}
+    .key-violet{background:linear-gradient(135deg,var(--c1),var(--c2));}
+    .key-peach{background:linear-gradient(135deg,var(--c3),#fecfef);}
+    .key-mint{background:linear-gradient(135deg,var(--c4),#fed6e3);}
+    .key-cream{background:linear-gradient(135deg,#ffecd2,#fcb69f);}
+    .image-fit{width:100%;height:auto;}
+    @media(max-width:768px){h1.title{font-size:1.9rem!important}}
+  </style>
+</head>
+
+<body>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2">🔒 EgoPrivacy: What Your First-Person Camera Says About You</h1>
+      <h2 class="subtitle is-4">ICML 2025 </h2>
+
+      <p class="is-size-5 mb-1">
+        Yijiang Li<sup>1</sup>, Genpei Zhang<sup>2</sup>, Jiacheng Cheng<sup>1</sup>,
+        Yi Li<sup>3</sup>, Xiaojun Shan<sup>1</sup><br>
+        Dashan Gao<sup>3</sup>, Jiancheng Lyu<sup>3</sup>, Yuan Li<sup>3</sup>,
+        Ning Bi<sup>3</sup>, Nuno Vasconcelos<sup>1</sup>
+      </p>
+      <p class="is-size-6 mb-4">
+        <sup>1</sup>University of California San Diego
+        <sup>2</sup>University of Electronic Science & Technology of China
+        <sup>3</sup>Qualcomm AI Research
+      </p>
+
+      <p>
+        <a class="button is-light is-rounded" href="https://arxiv.org/abs/2506.12258" target="_blank">
+          <span class="icon"><i class="ai ai-arxiv"></i></span><span>Website</span></a>
+        <a class="button is-light is-rounded" href="https://arxiv.org/abs/2506.12258" target="_blank">
+          <span class="icon"><i class="ai ai-arxiv"></i></span><span>Paper</span></a>
+        <a class="button is-light is-rounded" href="https://github.com/williamium3000/ego-privacy" target="_blank">
+          <span class="icon"><i class="fab fa-github"></i></span><span>Code</span></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Abstract</h3>
+    <p class="content has-text-justified">
+      While the rapid proliferation of wearable cameras has raised significant concerns about egocentric video privacy,
+      prior work has largely overlooked the unique privacy threats posed <em>to the camera wearer</em>. This work
+      investigates the question: <em>How much privacy information about the wearer can be inferred from first-person videos?</em>
+      We introduce <strong>EgoPrivacy</strong>, the first large-scale benchmark covering three privacy types and seven tasks,
+      from fine-grained identity recovery to coarse-grained age prediction. To emphasize the threats, we propose
+      <em>Retrieval-Augmented Attack</em> (RAA), which leverages ego-to-exo retrieval to boost demographic attacks.
+      Extensive experiments show wearer information is highly susceptible to leakage—foundation models recover identity,
+      scene, gender and race with 70–80 % accuracy even in <em>zero-shot</em> settings.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Benchmark Overview</h3>
+    <img src="static/images/overview.png" class="image-fit" alt="Benchmark overview">
+    <p class="has-text-centered is-size-6 mt-2">
+      EgoPrivacy spans <strong>3 privacy categories | 7 tasks | 9 k clips | 950 + identities | 130 + scenes</strong>.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Key Findings</h3>
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="box key-card key-violet key-white">
+          <h4 class="title is-5"><i class="fas fa-bolt"></i>&nbsp;Zero-Shot Leakage</h4>
+          <p>CLIP predicts <strong>gender 73 %</strong>, <strong>race 65 %</strong>,
+             <strong>age 80 %</strong> without egocentric fine-tuning.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="box key-card key-peach key-black">
+          <h4 class="title is-5"><i class="fas fa-link"></i>&nbsp;Retrieval-Augmented Attack</h4>
+          <p>Cross-view retrieval boosts demographic inference by <strong>+10–16 pp</strong>.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="box key-card key-mint key-black">
+          <h4 class="title is-5"><i class="fas fa-globe"></i>&nbsp;Cross-Domain Robustness</h4>
+          <p>Attacks remain well above chance on Charades-Ego (OOD), revealing persistent risks.</p>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="box key-card key-cream key-black">
+          <h4 class="title is-5"><i class="fas fa-video"></i>&nbsp;Temporal Modeling</h4>
+          <p>Attention / RNN heads leak more privacy than MLP; gains saturate beyond eight frames.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Retrieval-Augmented Attack Pipeline</h3>
+    <img src="static/images/raa.png" style="max-width:80%;margin:auto;" class="image-fit" alt="RAA pipeline">
+    <p class="has-text-centered is-size-6 mt-2">
+      RAA retrieves visually similar <em>exocentric</em> clips and fuses predictions with ego clips, yielding stronger demographic attacks.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Analyses</h3>
+
+    <figure class="image">
+      <img src="static/images/main_results_t2.png" class="image-fit" alt="Table 2 results">
+    </figure>
+    <p class="has-text-centered is-size-6 mb-4">
+      <em>Table 2.</em>  Demographic inference accuracy (higher is better).
+    </p>
+
+    <figure class="image">
+      <img src="static/images/main_results_t3.png" class="image-fit" alt="Table 3 results">
+    </figure>
+    <p class="has-text-centered is-size-6">
+      <em>Table 3.</em>  Identity and retrieval-augmented results.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h3 class="title is-3 has-text-centered">Implications &amp; Future Work</h3>
+    <div class="columns">
+      <div class="column">
+        <div class="box" style="border-left:4px solid #e74c3c;">
+          <h4 class="title is-5"><i class="fas fa-exclamation-triangle"></i>&nbsp;Implications</h4>
+          <ul>
+            <li><strong>Wearer privacy is vulnerable</strong>—identity &amp; demographics leak even in zero-shot.</li>
+            <li><strong>Policy gap</strong>—current regulations rarely address egocentric data.</li>
+            <li><strong>Mitigation</strong>—privacy-aware training &amp; selective obfuscation are urgently needed.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="box" style="border-left:4px solid #764ba2;">
+          <h4 class="title is-5"><i class="fas fa-lightbulb"></i>&nbsp;Future Work</h4>
+          <ul>
+            <li>End-to-end <em>defence pipelines</em> balancing utility &amp; privacy.</li>
+            <li>Privacy-preserving <em>foundation models</em> for AR wearables.</li>
+            <li>Human-in-the-loop evaluations on real AR glasses footage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop">
+    <h3 class="title is-4">BibTeX</h3>
+<pre><code>@inproceedings{Li2025EgoPrivacy,
+  title     = {EgoPrivacy: What Your First-Person Camera Says About You},
+  author    = {Li,Yijiang and Zhang,Genpei and Cheng,Jiacheng and Li,Yi and others},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2506.12258}
+}</code></pre>
+  </div>
+</section>
+</body>
+</html>
