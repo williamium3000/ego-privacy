@@ -1,1 +1,9 @@
-# ego-privacy
+# Ego-Privacy
+
+Official Codebase for ICML 2025 paper.
+>[__"EgoPrivacy: What Your First-Person Camera Says About You?"__](https://arxiv.org/abs/2506.12258)<br>
+>Yijiang Li, Genpei Zhang, Jiacheng Cheng, Yi Li, Xiaojun Shan, Dashan Gao, Jiancheng Lyu, Yuan Li, Ning Bi, Nuno Vasconcelos<br>
+[`[Paper]`](https://arxiv.org/abs/2506.12258) [`[Code]`](https://github.com/williamium3000/ego-privacy) [`[Dataset (To be release)]`]() [`[Webpage]`](https://williamium3000.github.io/ego-privacy/)
+
+***Abstract.***
+> While the rapid proliferation of wearable cameras has raised significant concerns about egocentric video privacy, prior work has largely overlooked the unique privacy threats posed to the camera wearer. This work investigates the core question: How much privacy information about the camera wearer can be inferred from their first-person view videos? We introduce EgoPrivacy, the first large-scale benchmark for the comprehensive evaluation of privacy risks in egocentric vision. EgoPrivacy covers three types of privacy (demographic, individual, and situational), defining seven tasks that aim to recover private information ranging from fine-grained (e.g., wearer's identity) to coarse-grained (e.g., age group). To further emphasize the privacy threats inherent to egocentric vision, we propose Retrieval-Augmented Attack, a novel attack strategy that leverages ego-to-exo retrieval from an external pool of exocentric videos to boost the effectiveness of demographic privacy attacks. An extensive comparison of the different attacks possible under all threat models is presented, showing that private information of the wearer is highly susceptible to leakage. For instance, our findings indicate that foundation models can effectively compromise wearer privacy even in zero-shot settings by recovering attributes such as identity, scene, gender, and race with 70-80 % accuracy. 
